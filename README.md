@@ -1,2 +1,2 @@
 # ReadIT
-Library Management System
+Get the right book for your needs!
