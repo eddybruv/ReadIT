@@ -1,0 +1,31 @@
+* {
+  color: white;
+}
+.body {
+  background-color: #1A2D31;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bigContainer {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  height: 80vh;
+  border: none;
+  border-radius: 2rem;
+}
+
+.rightSide img{
+  height: 2rem;
+  width: auto;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .bigContainer {
+    height: 90vh;
+    width: 90vw;
+  }
+}
