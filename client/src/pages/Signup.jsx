@@ -72,14 +72,16 @@ function Signup() {
                 id="name"
                 label="Full Name"
                 variant="standard"
-                InputLabelProps={{ style: {color: '#fff'}, }}
+                InputLabelProps={{ style: { color: "#fff" } }}
               />
             </Box>
             <Box
               className={classes.emailBox}
               sx={{ display: "flex", alignItems: "flex-end" }}
             >
-              <EmojiEmotionsIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+              <EmojiEmotionsIcon
+                sx={{ color: "action.active", mr: 1, my: 0.5 }}
+              />
               <TextField
                 sx={{ input: { color: "white" } }}
                 fullWidth
@@ -89,6 +91,7 @@ function Signup() {
                 id="username"
                 label="Username"
                 variant="standard"
+                InputLabelProps={{ style: { color: "#fff" } }}
               />
             </Box>
             <Box
@@ -104,6 +107,7 @@ function Signup() {
                 id="email"
                 label="Email"
                 variant="standard"
+                InputLabelProps={{ style: { color: "#fff" } }}
               />
             </Box>
             <Box
@@ -120,6 +124,7 @@ function Signup() {
                 id="password"
                 label="Password"
                 variant="standard"
+                InputLabelProps={{ style: { color: "#fff" } }}
               />
               <IconButton
                 onClick={() => setShowPassword(!showPassword)}
