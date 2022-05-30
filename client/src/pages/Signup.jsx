@@ -72,6 +72,7 @@ function Signup() {
                 id="name"
                 label="Full Name"
                 variant="standard"
+                InputLabelProps={{ style: {color: '#fff'}, }}
               />
             </Box>
             <Box
