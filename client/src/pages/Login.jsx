@@ -3,7 +3,6 @@ import React, { useState } from "react";
 // Material Ui imports
 import {
   TextField,
-  InputAdornment,
   Box,
   Button,
   IconButton,
