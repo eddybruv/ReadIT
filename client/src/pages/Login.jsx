@@ -74,6 +74,7 @@ function Login() {
                 id="email"
                 label="Email"
                 variant="standard"
+                InputLabelProps={{ style: { color: "#fff" } }}
               />
             </Box>
             <Box
@@ -90,6 +91,7 @@ function Login() {
                 id="password"
                 label="Password"
                 variant="standard"
+                InputLabelProps={{ style: { color: "#fff" } }}
               />
               <IconButton
                 onClick={() => setShowPassword(!showPassword)}
