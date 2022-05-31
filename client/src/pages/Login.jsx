@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // Material Ui imports
 import {
@@ -101,7 +102,7 @@ function Login() {
               </IconButton>
             </Box>
             <Button
-              sx={{ mt: 5, color: "white" }}
+              sx={{ mt: 3, color: "white" }}
               onClick={(e) => {
                 e.preventDefault();
                 console.log("clicked");
@@ -112,6 +113,9 @@ function Login() {
             >
               Login
             </Button>
+            <p className={style.signupLink}>
+              New to ReadIT? <Link style={{textDecoration: "none", color: "orange"}} to="/register">Register</Link>{" "}
+            </p>
           </form>
         </section>
 
@@ -119,7 +123,7 @@ function Login() {
           <div className={`${style.imageContainer}`}>
             <img src={logo} className="img-fluid" alt="logo" />
           </div>
-          <p>{quotes[Math.floor(Math.random() * 9)]}</p>
+          <p className={style.qoute}>{quotes[Math.floor(Math.random() * 9)]}</p>
         </section>
       </div>
     </section>
