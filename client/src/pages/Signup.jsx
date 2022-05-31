@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 // Material Ui imports
 import { TextField, Box, Button, IconButton } from "@mui/material";
 import MailIcon from "@mui/icons-material/Mail";
@@ -27,6 +27,9 @@ const useStyles = makeStyles({
     width: "80%",
     marginLeft: "0",
     marginRight: "0",
+  },
+  input: {
+    background: "rgba(0, 0, 0, 0.09)",
   },
 });
 
@@ -143,8 +146,17 @@ function Signup() {
               color="secondary"
               variant="contained"
             >
-              Login
+              Sign Up
             </Button>
+            <p className={style.loginLink}>
+              Already have an account{" "}
+              <Link
+                style={{ textDecoration: "none", color: "orange" }}
+                to="/login"
+              >
+                Login
+              </Link>{" "}
+            </p>
           </form>
         </section>
 
@@ -152,7 +164,9 @@ function Signup() {
           <div className={`${style.imageContainer}`}>
             <img src={logo} className="img-fluid" alt="logo" />
           </div>
-          <p>{quotes[Math.floor(Math.random() * 9)]}</p>
+          <p className={style.quoteText}>
+            {quotes[Math.floor(Math.random() * 9)]}
+          </p>
         </section>
       </div>
     </section>
