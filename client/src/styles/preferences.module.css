@@ -1,0 +1,71 @@
+.body {
+  background-color: #1a2d31;
+  color: white;
+  height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  padding: 3rem;
+  height: 100%;
+  width: 100%;
+  gap: 1rem
+}
+
+.photoSection {
+  width: 30%;
+}
+
+.preferencesSection {
+  width: 70%;
+}
+
+.imageContainer {
+  margin-top: 2rem;
+  height: 9rem;
+  width: 9rem;
+  border: none;
+  border-radius: 50%;
+  background-color: aliceblue;
+}
+
+.img {
+  border-radius: 0;
+  height: inherit;
+  width: inherit;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.preferences {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+}
+
+.button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 3rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .main {
+    flex-direction: column;
+    padding: 0;
+  }
+  .photoSection {
+    width: 100%;
+  }
+
+  .preferencesSection {
+    width: 100%;
+  }
+
+  .body {
+    height: fit-content;
+  }
+}
