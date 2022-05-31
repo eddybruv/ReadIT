@@ -40,10 +40,13 @@
   justify-content: center;
 }
 
-.rightSide p {
+.rightSide .qoute {
   font-family: 'Playfair';
   font-style: italic;
   font-weight: 400;
+  text-align: center;
+  margin: 0;
+  width: 90%;
 }
 
 h2 {
@@ -60,11 +63,21 @@ h2 {
 }
 
 .emailBox {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .loginInput{
   color: white;
+}
+
+.signupLink {
+  font-size: 1rem;
+  padding: 1rem 0;
+}
+
+.link {
+  text-decoration: none;
+  color:#e0a101;
 }
 
 /* Phone Responsive */
@@ -73,7 +86,7 @@ h2 {
     height: 100vh;
   }
   .bigContainer {
-    height: 75vh;
+    height: fit-content;
     width: 90vw;
     /* display: block !important; */
     padding: 0;
@@ -100,10 +113,15 @@ h2 {
     margin-bottom: 2rem;
   }
 
-  p {
+  .qoute {
     padding: 1rem;
     text-align: center;
     display: block;
   }
+
   
+.signupLink {
+  font-size: 1rem;
+  padding: 1rem 0;
+}
 }
