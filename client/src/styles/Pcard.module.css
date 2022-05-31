@@ -1,0 +1,21 @@
+.body {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  margin: .5rem .5rem;
+  border-radius: 2rem;
+  background-color: #263f44;
+}
+
+.body:hover {
+  background-color: rgba(224, 161, 1, 0.5);
+  cursor: pointer;
+}
+
+.active {
+  background-color: rgba(224, 161, 1, 1);
+}
+
+.content {
+  padding-right: .5rem;
+}
