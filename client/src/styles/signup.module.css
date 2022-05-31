@@ -67,9 +67,16 @@ h2 {
   color: white;
 }
 
-p {
+.quoteText {
   padding: 2rem;
   text-align: center;
+}
+
+.loginLink {
+  text-align: left;
+  padding: 1rem 0;
+  font-weight: 100;
+  font-family: 'Montserrat';
 }
 
 /* Phone Responsive */
@@ -78,7 +85,7 @@ p {
     height: 100vh;
   }
   .bigContainer {
-    height: 90vh;
+    height: fit-content;
     width: 90vw;
     /* display: block !important; */
     padding: 0;
@@ -95,7 +102,6 @@ p {
   .leftSide {
     justify-content: flex-start;
     padding: 2rem;
-    font-size: 2rem;
   }
 
 
@@ -109,7 +115,7 @@ p {
     margin-bottom: 0;
   }
 
-  p {
+  .quoteText {
     padding: 1rem;
     text-align: center;
     display: block;
