@@ -1,5 +1,14 @@
 import "./App.css";
-import Signup from './pages/Signup'
+
+// routing dependencies
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+
+// pages 
+import Signup from "./pages/Signup";
+import Preferences from "./pages/Preferences";
+import Login from "./pages/Login";
+import Error from './pages/ErrorPage'
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -14,9 +23,16 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <Signup></Signup>
-      </div>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Signup />} />
+          <Route path="/preference" element={<Preferences/>}/>
+          <Route path="/for-you" element={<Login/>}/>
+          <Route path="/*" element={<Error/>}/>
+
+        </Routes>
+      </Router>
     </ThemeProvider>
   );
 }
