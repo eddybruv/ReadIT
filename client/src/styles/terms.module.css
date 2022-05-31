@@ -1,0 +1,41 @@
+.body {
+  background-color: rgb(26, 45, 49);
+  color: white;
+  height: fit-content;
+}
+
+nav {
+  height: fit-content;
+  background-color: rgba(26, 45, 49, 0.09);
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem !important;
+  width: 100%;
+  position: fixed;
+}
+
+.imageContainer {
+  height: 3rem;
+}
+
+img {
+  height: inherit !important;
+}
+
+.main {
+  padding-top: 7vh;
+  width: 70%;
+}
+
+p {
+  text-align: left !important;
+  width: inherit;
+  margin: 0;
+}
+
+@media only screen and (max-width: 1000px) {
+  nav {
+    padding: .5rem 0.2rem !important;
+  }
+}
