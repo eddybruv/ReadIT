@@ -1,21 +1,20 @@
-import React from 'react'
+import React from "react";
 import style from "../styles/foryou.module.css";
-import SideNav from '../components/foryouPage/SideNav';
+import SideNav from "../components/foryouPage/SideNav";
+import Hero from "../components/foryouPage/Hero";
 
 function ForYou() {
   return (
     <section className={`${style.body} container-fluid p-0`}>
       <section className={`${style.sideNav}`}>
-        <SideNav/>
+        <SideNav />
       </section>
       <section className={`${style.hero}`}>
-        Hero
+        <Hero />
       </section>
-      <section className={`${style.rightNav}`}>
-        Right
-      </section>
+      <section className={`${style.rightNav}`}>Right</section>
     </section>
   );
 }
 
-export default ForYou
+export default ForYou;
