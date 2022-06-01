@@ -31,7 +31,7 @@ function App() {
           <Route path="/preference" element={<Preferences />} />
           <Route path="/for-you" element={<Login />} />
           <Route path="/*" element={<Error />} />
-          <Route path="/foryou" element={<ForYou />} />
+          <Route path="/foryou/:username" element={<ForYou />} />
         </Routes>
       </Router>
     </ThemeProvider>
