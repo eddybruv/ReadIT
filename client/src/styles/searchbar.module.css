@@ -1,0 +1,60 @@
+.body {
+  display: flex;
+  padding: .7rem 1.5rem;
+  background-color: rgba(38, 63, 68, 0.5);
+  width: 50%;
+  border-radius: 4rem;
+  gap: 1rem;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.select {
+  color: #fff;
+  font-family: "Montserrat";
+  outline: none;
+  border: none;
+  background-color: rgba(38, 63, 68, 1);
+  padding: 0.4rem 1rem;
+  padding-right: 2rem;
+  border-radius: 4rem;
+
+  /* for dropdown arrow */
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+.searchInput {
+  width: 100%;
+  border-bottom: 1px solid rgb(173, 170, 170);
+}
+
+.searchInput input {
+  width: 100%;
+  background-color: inherit;
+  outline: none;
+  border: none;
+}
+
+@media only screen and (max-width: 1000px) {
+  .body {
+    width: 100%;
+    padding: .2rem;
+    gap: 0.2rem;
+    border-radius: 1rem;
+    padding-left: .5rem;
+  }
+
+  .select {
+    appearance: none;
+    background-image: none;
+    padding-right: 0;
+  }
+
+  .searchInput {
+    width: 50%;
+  }
+}

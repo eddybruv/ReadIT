@@ -4,6 +4,7 @@
   max-width: 100vw;
   display: flex;
   justify-content: space-between;
+  gap: 2rem;
 }
 
 .sideNav {
@@ -20,5 +21,30 @@
 }
 
 .rightNav {
-  width: 30%;
+  width: 33%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .body {
+    flex-direction: column;
+    gap: 0 0;
+  }
+
+  .sideNav {
+    position: fixed;
+    bottom: 0;
+    height: fit-content;
+    flex-direction: row;
+    width: 100vw;
+    height: fit-content;
+    padding: .5rem
+  }
+
+  .hero {
+    margin-left: 0;
+    width: 100%;
+  }
+  .rightNav {
+    display: none;
+  }
 }
