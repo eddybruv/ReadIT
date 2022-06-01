@@ -48,7 +48,7 @@
 .button {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: 3rem;
 }
 
@@ -65,7 +65,15 @@
     width: 100%;
   }
 
+  
+}
+
+@media only screen and (max-width: 600px) {
   .body {
     height: fit-content;
+  }
+
+  .button {
+    padding: 1rem;
   }
 }
