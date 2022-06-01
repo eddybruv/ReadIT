@@ -9,18 +9,17 @@ function Card({ value }) {
 
   const handleClick = (e) => {
     const word = e.target.parentNode.parentNode.childNodes[0].firstChild.data;
+
     if (typeof word === "string") {
-      
       setAdded(!added);
     }
-    
-  }
+  };
 
   return (
-    <section className={`${style.body} ${added? style.active : ""}`}>
+    <section className={`${style.body} ${added ? style.active : ""}`}>
       <div className={style.content}>{value}</div>
       <IconButton onClick={handleClick}>
-        {added?  <RemoveIcon/> : <AddIcon/> }
+        {added ? <RemoveIcon /> : <AddIcon />}
       </IconButton>
     </section>
   );
