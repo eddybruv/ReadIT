@@ -1,0 +1,38 @@
+.body {
+  padding-top: 1.5rem;
+}
+.title {
+  color: #caecee;
+  font-size: 2.1rem;
+  font-weight: bold;
+}
+
+.boxes::-webkit-scrollbar {
+  height: 7px;
+  border-radius: 1rem;
+}
+.boxes::-webkit-scrollbar-track {
+  background: #20363a;
+  border-radius: 1rem;
+}
+
+/* Handle */
+.boxes::-webkit-scrollbar-thumb {
+  background: #c58d00;
+  border-radius: 1rem;
+}
+
+/* Handle on hover */
+.boxes::-webkit-scrollbar-thumb:hover {
+  background: #ffb700;
+}
+
+@media only screen and (max-width: 1000px) {
+  .boxes {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+}
