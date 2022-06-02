@@ -1,0 +1,41 @@
+.body {
+    background-color: #263f44;
+    border-radius: 1.5rem;
+    padding: 1rem;
+}
+
+.imageContainer {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
+
+.img {
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    filter: grayscale(100%);
+}
+
+.top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.num, .text, .name, .link, .title, .text {
+    padding: 0;
+    margin: 0;
+    font-size: .8rem;
+}
+
+.name {
+    font-size: .8rem;
+}
+
+.last {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
