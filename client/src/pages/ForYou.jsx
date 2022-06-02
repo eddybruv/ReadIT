@@ -2,6 +2,7 @@ import React from "react";
 import style from "../styles/foryou.module.css";
 import SideNav from "../components/foryouPage/SideNav";
 import Hero from "../components/foryouPage/Hero";
+import FeaturedAuthors from "../components/foryouPage/FeaturedAuthors";
 
 function ForYou() {
   return (
@@ -12,7 +13,9 @@ function ForYou() {
       <section className={`${style.hero}`}>
         <Hero />
       </section>
-      <section className={`${style.rightNav}`}>Right</section>
+      <section className={`${style.rightNav}`}>
+        <FeaturedAuthors />
+      </section>
     </section>
   );
 }
