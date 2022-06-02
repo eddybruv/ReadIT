@@ -1,0 +1,14 @@
+.body {
+    padding-top: 1.5rem;
+}
+
+.title {
+    font-size: 1.9rem;
+    font-weight: bold;
+    color: #caecee;
+}
+
+.cards {
+    gap: 1.2rem 1.2rem;
+    margin-left: 0.1rem;
+}
