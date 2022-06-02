@@ -1,8 +1,63 @@
 .body {
-  border:2px solid;
+  border: 2px solid;
   padding: 3rem 2rem;
 }
 
 .previousText {
   color: #caecee;
+  padding-bottom: 1rem;
+  font-size: 2.3rem;
+  font-weight: bold;
+}
+
+.previousCard {
+  gap: 0.7rem;
+  width: inherit;
+  margin-left: .1rem;
+  height: 230px;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+}
+
+
+/* width */
+.previousCard::-webkit-scrollbar {
+  height: 7px;
+  border-radius: 1rem;
+}
+
+/* Track */
+.previousCard::-webkit-scrollbar-track {
+  background: #20363a;
+  border-radius: 1rem;
+}
+
+/* Handle */
+.previousCard::-webkit-scrollbar-thumb {
+  background: #c58d00;
+  border-radius: 1rem;
+}
+
+/* Handle on hover */
+.previousCard::-webkit-scrollbar-thumb:hover {
+  background: #ffb700;
+
+}
+
+.previous {
+  padding-top: 2rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .body {
+    border: 2px solid;
+    padding: 1rem 2rem;
+  }
+
+  .previousText {
+    font-size: 1.6rem;
+  }
+  .previousCard {
+    gap: 0.7rem;
+  }
 }
