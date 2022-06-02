@@ -1,0 +1,40 @@
+.body {
+  display: flex;
+  background-color: #263f44;
+  padding: 1rem;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.title {
+  color: #fbd068;
+  font-size: 1.7rem;
+  font-weight: 500;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.num {
+  color:#fbd068;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  text-align: end;
+  font-size: 1.5rem;
+}
+
+.aval{
+  font-size: .7rem;
+  text-align: end;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  color: #67a2af;
+}
+
+.icon {
+  width: 100%;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
