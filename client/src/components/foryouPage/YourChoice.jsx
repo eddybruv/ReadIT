@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios"
 import style from "../../styles/yourchoice.module.css"
-import books from "./book";
+import defaultBooks from "./book";
 import Card from "./Card";
 
 function YourChoice() {
-  const [book, setBooks] = useState()
+  const [book, setBooks] = useState([])
   let stuff = ["crime", "mystery", "fiction"];
 
   const fetchData = async ()=>{
@@ -26,18 +26,19 @@ function YourChoice() {
   useEffect(() => {
       let data = fetchData().then((info) => setBooks(info.flat()));
     },
-    [])
+    [book])
 
   useEffect(() => {
-      console.log(book)
+      // console.log(book);
     },
     [book]);
+
 
   return (
     <section className={style.body}>
       <h3 className={style.title}> Based On Your Choices</h3>
       <section className={`row ${style.cards}`}>
-        {books.map((book, index) => {
+        {book?.map((book, index) => {
           return (
             <Card
               key={index}
