@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+
 // Material Ui imports
 import { TextField, Box, Button, IconButton } from "@mui/material";
 import MailIcon from "@mui/icons-material/Mail";
@@ -10,8 +12,12 @@ import PersonIcon from "@mui/icons-material/Person";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import { makeStyles } from "@material-ui/core";
 
+import axios from "axios";
+
+// style and photo import
 import style from "./../styles/signup.module.css";
 import logo from "../images/logo.png";
+import quote from "../quote";
 
 const useStyles = makeStyles({
   emailBox: {
@@ -33,21 +39,58 @@ const useStyles = makeStyles({
   },
 });
 
-const quotes = [
-  '"Many people, myself among them, feel better at the mere sight of a book."',
-  '"The library is inhabited by spirits that come out of the pages at night."',
-  "\"If you don't like to read, you haven't found the right book.\"",
-  '"When I have a little money, I buy books; and if I have any left, I buy food and clothes."',
-  '"Fill your house with stacks of books, in all the crannies and all the nooks."',
-  '"Rainy days should be spent at home with a cup of tea and a good book."',
-  '"Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten."',
-  '"Books are good company, in sad times and happy times, for books are people - people who have managed to stay alive by hiding between the covers of a book."',
-  '"A book is a garden, an orchard, a storehouse, a party, a company by the way, a counselor, a multitude of counselors."',
-];
-
 function Signup() {
+  const navigate = useNavigate();
+
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
+  const [user, setUser] = useState({
+    name: "",
+    username: "",
+    password: "",
+    email: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser({
+      ...user, //spread operator
+      [name]: value,
+    });
+  };
+
+  const checkFields = (user) => {
+    if (
+      user.name === "" ||
+      user.email === "" ||
+      user.password === "" ||
+      user.username === ""
+    ) {
+      alert("Please fill all input fields!");
+      setUser({ name: "", email: "", password: "", username: "" });
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (checkFields(user)) {
+      const result = await axios
+        .post("/api/user/create-user", user)
+        .then((data) => data)
+        .catch(() => alert("login went wrong"));
+
+      console.log(result);
+        
+      if (result.status === 200) {
+        sessionStorage.setItem("loggedUser", JSON.stringify(result.data.data));
+        navigate("/preference");
+      } else {
+        alert("Account not registered");
+      }
+    }
+  };
 
   return (
     <section className={`container-fluid p-0 m-0 ${style.body}`}>
@@ -75,6 +118,8 @@ function Signup() {
                 id="name"
                 label="Full Name"
                 variant="standard"
+                value={user.name}
+                onChange={handleChange}
                 InputLabelProps={{ style: { color: "#fff" } }}
               />
             </Box>
@@ -94,6 +139,8 @@ function Signup() {
                 id="username"
                 label="Username"
                 variant="standard"
+                value={user.username}
+                onChange={handleChange}
                 InputLabelProps={{ style: { color: "#fff" } }}
               />
             </Box>
@@ -110,6 +157,8 @@ function Signup() {
                 id="email"
                 label="Email"
                 variant="standard"
+                value={user.email}
+                onChange={handleChange}
                 InputLabelProps={{ style: { color: "#fff" } }}
               />
             </Box>
@@ -127,6 +176,8 @@ function Signup() {
                 id="password"
                 label="Password"
                 variant="standard"
+                value={user.password}
+                onChange={handleChange}
                 InputLabelProps={{ style: { color: "#fff" } }}
               />
               <IconButton
@@ -138,10 +189,7 @@ function Signup() {
             </Box>
             <Button
               sx={{ mt: 5, color: "white" }}
-              onClick={(e) => {
-                e.preventDefault();
-                console.log("clicked");
-              }}
+              onClick={handleSubmit}
               type="submit"
               color="secondary"
               variant="contained"
@@ -164,9 +212,7 @@ function Signup() {
           <div className={`${style.imageContainer}`}>
             <img src={logo} className="img-fluid" alt="logo" />
           </div>
-          <p className={style.quoteText}>
-            {quotes[Math.floor(Math.random() * 9)]}
-          </p>
+          <p className={style.quoteText}>{quote}</p>
         </section>
       </div>
     </section>
