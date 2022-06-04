@@ -1,5 +1,7 @@
 import React from "react";
 import Card from "./Card";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import { Button, Typography } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
@@ -7,7 +9,8 @@ import SendIcon from "@mui/icons-material/Send";
 import style from "../../styles/preferences.module.css";
 
 function PickPreference() {
-  let count = 0;
+  const navigate = useNavigate();
+  let user = JSON.parse(sessionStorage.getItem("loggedUser"));
 
   const preferences = [
     { value: "Romance" },
@@ -32,6 +35,23 @@ function PickPreference() {
     { value: "Mystery" },
   ];
 
+  const handleClick = async (e) => {
+    e.preventDefault();
+    user.preference = user.preference.flat();
+    console.log(user)
+    sessionStorage.setItem("loggedUser", JSON.stringify(user));
+
+    /* let res = await axios
+      .post("/api/user/update-user", {
+        _id: user._id,
+        imageUrl: user.imageUrl,
+        preference: user.preference,
+      })
+      .then((data) => data.data);
+    console.log(res); */
+    navigate(`/${user.username}`);
+  };;
+
   return (
     <div className={`${style.preferencesSection}`}>
       <Typography
@@ -53,6 +73,7 @@ function PickPreference() {
           color="secondary"
           variant="contained"
           endIcon={<SendIcon style={{ fill: "#1A2D31" }} />}
+          onClick={handleClick}
         >
           Get Started
         </Button>
