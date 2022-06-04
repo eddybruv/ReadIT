@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 // Material Ui imports
-import {
-  TextField,
-  Box,
-  Button,
-  IconButton,
-} from "@mui/material";
+import { TextField, Box, Button, IconButton } from "@mui/material";
 import MailIcon from "@mui/icons-material/Mail";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -16,6 +11,9 @@ import { makeStyles } from "@material-ui/core";
 
 import style from "./../styles/login.module.css";
 import logo from "../images/logo.png";
+
+import quote from "../quote";
+import axios from "axios";
 
 const useStyles = makeStyles({
   emailBox: {
@@ -34,21 +32,60 @@ const useStyles = makeStyles({
   },
 });
 
-const quotes = [
-  '"Many people, myself among them, feel better at the mere sight of a book."',
-  '"The library is inhabited by spirits that come out of the pages at night."',
-  "\"If you don't like to read, you haven't found the right book.\"",
-  '"When I have a little money, I buy books; and if I have any left, I buy food and clothes."',
-  '"Fill your house with stacks of books, in all the crannies and all the nooks."',
-  '"Rainy days should be spent at home with a cup of tea and a good book."',
-  '"Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten."',
-  '"Books are good company, in sad times and happy times, for books are people - people who have managed to stay alive by hiding between the covers of a book."',
-  '"A book is a garden, an orchard, a storehouse, a party, a company by the way, a counselor, a multitude of counselors."',
-];
-
 function Login() {
+  const navigate = useNavigate();
+
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const checkFields = (user) => {
+    if (user.email === "" || user.password === "") {
+      alert("Please fill all input fields!");
+      setUser({ name: "", email: "", password: "", username: "" });
+      return false;
+    }
+    return true;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser({
+      ...user, //spread operator
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (checkFields(user)) {
+      const result = await axios
+        .post("/api/user/login", user)
+        .then((data) => data)
+        .catch(() => alert("login went wrong"));
+
+      console.log(result);
+      if (result.data.message === "user not found") {
+        alert("User Not Found!");
+      } else {
+        if (result.status === 200) {
+          sessionStorage.setItem(
+            "loggedUser",
+            JSON.stringify(result.data.data)
+          );
+          const username = JSON.parse(
+            sessionStorage.getItem("loggedUser")
+          ).username;
+          navigate(`/${username}`);
+        } else {
+          alert("Account not registered");
+        }
+      }
+    }
+  };
 
   return (
     <section className={`container-fluid p-0 m-0 ${style.body}`}>
@@ -75,6 +112,8 @@ function Login() {
                 id="email"
                 label="Email"
                 variant="standard"
+                value={user.email}
+                onChange={handleChange}
                 InputLabelProps={{ style: { color: "#fff" } }}
               />
             </Box>
@@ -92,6 +131,8 @@ function Login() {
                 id="password"
                 label="Password"
                 variant="standard"
+                value={user.password}
+                onChange={handleChange}
                 InputLabelProps={{ style: { color: "#fff" } }}
               />
               <IconButton
@@ -103,10 +144,7 @@ function Login() {
             </Box>
             <Button
               sx={{ mt: 3, color: "white" }}
-              onClick={(e) => {
-                e.preventDefault();
-                console.log("clicked");
-              }}
+              onClick={handleSubmit}
               type="submit"
               color="secondary"
               variant="contained"
@@ -114,7 +152,13 @@ function Login() {
               Login
             </Button>
             <p className={style.signupLink}>
-              New to ReadIT? <Link style={{textDecoration: "none", color: "orange"}} to="/register">Register</Link>{" "}
+              New to ReadIT?{" "}
+              <Link
+                style={{ textDecoration: "none", color: "orange" }}
+                to="/register"
+              >
+                Register
+              </Link>{" "}
             </p>
           </form>
         </section>
@@ -123,7 +167,7 @@ function Login() {
           <div className={`${style.imageContainer}`}>
             <img src={logo} className="img-fluid" alt="logo" />
           </div>
-          <p className={style.qoute}>{quotes[Math.floor(Math.random() * 9)]}</p>
+          <p className={style.qoute}>{quote}</p>
         </section>
       </div>
     </section>
