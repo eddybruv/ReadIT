@@ -11,7 +11,7 @@ import  Tooltip  from '@mui/material/Tooltip';
 
 import style from "../../styles/sideNav.module.css";
 import logo from '../../images/logo.png'
-
+import {Navigate, useNavigate} from "react-router-dom"
 
 function SideNav() {
   return (
@@ -45,7 +45,7 @@ function SideNav() {
       </div>
 
       <div className={`${style.logOut} ${style.icons}`}>
-        <IconButton>
+        <IconButton onClick={() => Navigate("/registration")}>
           <LogoutIcon fontSize="large" />
         </IconButton>
       </div>
