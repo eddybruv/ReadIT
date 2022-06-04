@@ -33,8 +33,8 @@ function App() {
           <Route path="/register" element={<Signup />} />
           <Route path="/preference" element={<Preferences />} />
           <Route path="/for-you" element={<Login />} />
-          <Route path="/*" element={<Error />} />
-          <Route path="/foryou/:username" element={<ForYou />} />
+          {/* <Route path="/*" element={<Error />} /> */}
+          <Route path="/:username" element={<ForYou />} />
         </Routes>
       </Router>
     </ThemeProvider>
