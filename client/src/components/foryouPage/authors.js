@@ -2,7 +2,7 @@ const authors = [
   {
     name: "George Orwell",
     imgUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/8/82/George_Orwell%2C_c._1940_%2841928180381%29.jpg",
+      "https://ichef.bbci.co.uk/news/976/cpsprodpb/AB4E/production/_105545834_aa15ccae-98c1-40f3-9b84-ac32ebcc6324.jpg",
     value: "george orwell",
     num: 6,
     occ: "Writer, Literary critic"
@@ -12,6 +12,7 @@ const authors = [
     imgUrl:
       "https://i0.wp.com/www.heyuguys.com/images/2011/08/Stephen-King.jpg?w=2088&ssl=1",
     value: "stephen king",
+    occ: "Film writer",
     num: 63
   },
   {
@@ -20,7 +21,7 @@ const authors = [
       "https://gagadget.com/media/cache/9c/79/9c7945026f4f835ad2c2f6a64f219b56.jpg",
     value: "stan lee",
     num: 217,
-    occ: "Film writter"
+    occ: "Film writer"
   },
   {
     name: "William Shakespeare",

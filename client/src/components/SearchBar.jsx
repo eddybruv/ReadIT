@@ -1,27 +1,110 @@
-import React from 'react'
+import React from "react";
 
 import SearchIcon from "@mui/icons-material/Search";
-
+import { IconButton } from "@mui/material";
+import axios from "axios";
 import style from "../styles/searchbar.module.css";
-
+import { useState, useEffect } from "react";
+import Card from "./foryouPage/Card";
 
 function SearchBar() {
+  const [results, setResults] = useState([]);
+  const [select, setSelect] = useState("intitle:");
+
+  const [text, setText] = useState("");
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
+
+  const handleSelect = (e) => {
+    setSelect(e.target.value);
+    console.log(select);
+  };
+
+  const handleSubmit = async (e) => {
+    let url = `https://www.googleapis.com/books/v1/volumes?q=${select}${text}&maxResults=40&key=AIzaSyC6gNm9Y2bLTInrIZ9zMPax2s3Ohw8lJhE`;
+    let request = await axios.get(url);
+    console.log(url);
+    console.log(request);
+    setResults(request.data.items);
+    sessionStorage.setItem("results",JSON.stringify(request.data.items));
+    
+    
+    console.log(results);
+  };
+
+  let display = JSON.parse(sessionStorage.getItem("results"));
+  useEffect(() => {
+    
+    console.log( "new results", results)
+  }, [results])
+  
+  /* if (display !== null) {
+    display = display.filter((book) => {
+      if (
+        book.volumeInfo.hasOwnProperty("imageLinks") &&
+        book.volumeInfo.hasOwnProperty("authors") &&
+        book.volumeInfo.hasOwnProperty("description") &&
+        book.volumeInfo.hasOwnProperty("pageCount") &&
+        book.volumeInfo.hasOwnProperty("inmageLinks") &&
+        book.volumeInfo.hasOwnProperty("previewLink") &&
+        book.volumeInfo.hasOwnProperty("averageCounting") &&
+        book.volumeInfo.hasOwnProperty("authors")
+      ) {
+        return true;
+      }
+      return false;
+    });
+  } */
+
   return (
-    <section className={style.body}>
-      <SearchIcon />
-      <section className={style.choices}>
-        <select className={style.select} name="option" id="">
-          <option value="title">Title</option>
-          <option value="author">Author</option>
-          <option value="subject">Subject</option>
-        </select>
-      </section>
-      <section className={style.searchInput}>
-        <input type="text" placeholder='Search here' />
+    <>
+      <section className={style.body}>
+        <section className={style.choices}>
+          <select
+            onChange={handleSelect}
+            className={style.select}
+            name="option"
+            id=""
+          >
+            <option value="intitle:">Title</option>
+            <option value="inauthor:">Author</option>
+            <option value="subject:">Subject</option>
+          </select>
+        </section>
+        <section className={style.searchInput}>
+          <input
+            onChange={handleChange}
+            type="text"
+            value={text}
+            placeholder="Search here"
+          />
+        </section>
+        <IconButton onClick={handleSubmit}>
+          <SearchIcon style={{ fill: "#e0a101" }} />
+        </IconButton>
       </section>
 
-    </section>
-  )
+      <section className={`row ${style.searchResults}`}>
+        {/* { display.map((book, index) => (
+              <Card
+                key={index}
+                title={book.volumeInfo.title}
+                author={book.volumeInfo?.authors[0]}
+                publishedDate={book.volumeInfo.publishedDate}
+                description={book.volumeInfo.description}
+                pageCount={book.volumeInfo.pageCount}
+                smallThumbnail={book.volumeInfo.imageLinks.smallThumbnail}
+                thumbnail={book.volumeInfo.imageLinks.thumbnail}
+                previewLink={book.volumeInfo.previewLink}
+                user_id={index}
+                averageRating={book.volumeInfo.averageRating}
+              />
+            ))
+          /* : "" */} 
+      </section>
+    </>
+  );
 }
 
-export default SearchBar
+export default SearchBar;

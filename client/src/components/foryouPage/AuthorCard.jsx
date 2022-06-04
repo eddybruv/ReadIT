@@ -19,9 +19,9 @@ function AuthorCard({name, imgUrl, value, num, occ}) {
           <p className={style.name}>{name}</p>
           <p className={style.title}>{occ}</p>
         </section>
-        <section className={style.last}>
+        <section onClick={() => console.log("clicked")} className={style.last}>
           <p className={style.link}>More...</p>
-          <SendOutlinedIcon />
+          <SendOutlinedIcon  style={{fill: "#e0a101"}}/>
         </section>
       </section>
     </section>

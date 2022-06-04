@@ -14,27 +14,27 @@ const categories = [
   {
     title: "Science",
     available: "1.2k",
-    icon: <BiotechOutlinedIcon fontSize="large" />,
+    icon: <BiotechOutlinedIcon fontSize="large" style={{fill: "#67a2af"}}/>,
   },
   {
     title: "Arts",
     available: "1.8k",
-    icon: <HistoryEduIcon fontSize="large" />,
+    icon: <HistoryEduIcon fontSize="large" style={{fill: "#67a2af"}}/>,
   },
   {
     title: "Design",
     available: "80",
-    icon: <DesignServicesOutlinedIcon fontSize="large" />,
+    icon: <DesignServicesOutlinedIcon fontSize="large" style={{fill: "#67a2af"}}/>,
   },
   {
     title: "Cooking",
     available: "180",
-    icon: <OutdoorGrillOutlinedIcon fontSize="large" />,
+    icon: <OutdoorGrillOutlinedIcon fontSize="large" style={{fill: "#67a2af"}}/>,
   },
   {
     title: "Money",
     available: "1k",
-    icon: <PaidOutlinedIcon fontSize="large" />,
+    icon: <PaidOutlinedIcon fontSize="large" style={{fill: "#67a2af"}}/>,
   },
 ];
 

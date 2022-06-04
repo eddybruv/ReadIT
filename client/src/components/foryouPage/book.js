@@ -731,6 +731,7 @@ const books = [
       quoteSharingAllowed: false,
     },
   },
+  
 ];
 
 export default books
