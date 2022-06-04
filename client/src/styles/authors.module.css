@@ -1,5 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+.body {
+  position: fixed;
+  padding: 2.5rem 1rem;
+}
+
 .cards {
   gap: 1rem;
   overflow: hidden;
   margin: 0;
+}
+
+.self {
+  display: flex;
+
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.name {
+  margin-bottom: 0;
+  padding: 0 1rem;
+  color: #caecee;
+  font-weight: 500;
+  font-size: 1.7rem;
+  font-family: "Satisfy", "Montserrat", sans-serif;
+}
+
+.header {
+  padding-top: 1rem;
+  color: #caecee;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.imageContainer {
+  width: 60px;
+  height: 60px;
+}
+
+.imageContainer img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
 }

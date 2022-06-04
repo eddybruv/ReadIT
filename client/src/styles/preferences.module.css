@@ -28,7 +28,8 @@
   width: 9rem;
   border: none;
   border-radius: 50%;
-  background-color: aliceblue;
+  background-color:#1a2d31;
+  
 }
 
 .img {
@@ -37,6 +38,7 @@
   width: inherit;
   object-fit: cover;
   border-radius: 50%;
+  border: none;
 }
 
 .preferences {
@@ -50,6 +52,10 @@
   display: flex;
   justify-content: center;
   margin-top: 3rem;
+}
+
+.input {
+  display: none;
 }
 
 @media only screen and (max-width: 1000px) {

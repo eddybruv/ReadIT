@@ -15,12 +15,12 @@
     height: 70px;
     width: 70px;
     object-fit: cover;
-    filter: grayscale(100%);
+    filter: grayscale(50%);
 }
 
 .top {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -30,12 +30,31 @@
     font-size: .8rem;
 }
 
+.num {
+    color: #e0a101;
+}
+
 .name {
     font-size: .8rem;
+}
+
+.title {
+    color: #67a2af;
+    font-size: .7rem;
+    font-weight: 300;
 }
 
 .last {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: -0.3rem 1rem;
+}
+
+.link  {
+    color: #e0a101;
+}
+
+.last:hover {
+    cursor: pointer;
 }
