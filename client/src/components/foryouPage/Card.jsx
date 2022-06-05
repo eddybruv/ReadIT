@@ -34,7 +34,9 @@ function Card({
         </div>
         <ButtonGroup>
           <Button color="secondary">Preview</Button>
-          <Button color="secondary" variant="contained">Add</Button>
+          <Button color="secondary" variant="contained">
+            Add
+          </Button>
         </ButtonGroup>
       </div>
     </section>
