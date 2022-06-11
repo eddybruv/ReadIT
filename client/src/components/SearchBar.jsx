@@ -27,18 +27,16 @@ function SearchBar() {
     console.log(url);
     console.log(request);
     setResults(request.data.items);
-    sessionStorage.setItem("results",JSON.stringify(request.data.items));
-    
-    
+    sessionStorage.setItem("results", JSON.stringify(request.data.items));
+
     console.log(results);
   };
 
   let display = JSON.parse(sessionStorage.getItem("results"));
   useEffect(() => {
-    
-    console.log( "new results", results)
-  }, [results])
-  
+    console.log("new results", results);
+  }, [results]);
+
   /* if (display !== null) {
     display = display.filter((book) => {
       if (
@@ -101,7 +99,7 @@ function SearchBar() {
                 averageRating={book.volumeInfo.averageRating}
               />
             ))
-          /* : "" */} 
+          /* : "" */}
       </section>
     </>
   );
