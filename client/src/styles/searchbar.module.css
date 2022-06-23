@@ -38,6 +38,11 @@
   border: none;
 }
 
+.searchResults {
+  padding-top: 1.5rem;
+  gap: 1rem 1rem;
+}
+
 @media only screen and (max-width: 1000px) {
   .body {
     width: 100%;
