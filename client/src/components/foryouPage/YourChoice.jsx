@@ -5,17 +5,16 @@ import defaultBooks from "./book";
 import Card from "./Card";
 
 function YourChoice() {
-  // const [book, setBooks] = useState(null);
-  let stuff = ["crime", "mystery", "fiction"];
-
   const user = JSON.parse(sessionStorage.getItem("loggedUser"))
-  let books = user.preference;
+  let topics = user.preference;
 
-  /* const fetchData = async () => {
+  const [books, setBooks] = useState(null);
+
+  const fetchData = async () => {
     let allPromises = [];
-    stuff.forEach((one) => {
+    topics.forEach((one) => {
       const myPromise = new Promise(async (resolve, reject) => {
-        let url = `https://www.googleapis.com/books/v1/volumes?q=subject:${one}&key=AIzaSyC6gNm9Y2bLTInrIZ9zMPax2s3Ohw8lJhE`;
+        let url = `https://www.googleapis.com/books/v1/volumes?q=subject:${one}&maxResults=30&&key=AIzaSyC6gNm9Y2bLTInrIZ9zMPax2s3Ohw8lJhE`;
         let request = await axios.get(url);
         resolve(request.data.items);
       });
@@ -24,42 +23,55 @@ function YourChoice() {
     });
 
     return await Promise.all(allPromises);
-  }; */
+  };
 
   useEffect(() => {
-    console.log(books);
-  }, [books]);
+    console.log(books)
+  }, [books])
 
   useEffect(() => {
-    // let data = fetchData().then((info) => setBooks(info.flat()));
+    const fetch = async () => {
+      const data = await fetchData();
+      console.log(data);
+      setBooks(data.flat())
+      console.log(books)
+    }
+    fetch().then();
   }, []);
 
 
-    books = books.filter((book) => {
-      if (
-        book.volumeInfo.hasOwnProperty("imageLinks") &&
-        book.volumeInfo.hasOwnProperty("authors") &&
-        book.volumeInfo.hasOwnProperty("publishedDate") &&
-        book.volumeInfo.hasOwnProperty("pageCount") &&
-        book.volumeInfo.hasOwnProperty("previewLink") &&
-        book.volumeInfo.imageLinks.hasOwnProperty("smallThumbnail")
-      ) {
-        return true;
-      }
-      return false;
-    })
+  Array.prototype.shuffle = (array) => {
+    let currentIndex = array.length,  randomIndex;
 
+    // While there remain elements to shuffle.
+    while (currentIndex !== 0) {
 
-    
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
 
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
 
+    return array;
+  }
 
   return (
     <section className={style.body}>
       <h3 className={style.title}> Based On Your Choices</h3>
       <section className={`row ${style.cards}`}>
         {books !== null
-          ? books.map((book, index) => (
+          ? books.filter((book) => {
+            return book.volumeInfo.hasOwnProperty("imageLinks") &&
+              book.volumeInfo.hasOwnProperty("authors") &&
+              book.volumeInfo.hasOwnProperty("publishedDate") &&
+              book.volumeInfo.hasOwnProperty("pageCount") &&
+              book.volumeInfo.hasOwnProperty("previewLink") &&
+              book.volumeInfo.imageLinks.hasOwnProperty("smallThumbnail");
+
+          }).map((book, index) => (
               <Card
                 key={index}
                 title={book.volumeInfo.title}
