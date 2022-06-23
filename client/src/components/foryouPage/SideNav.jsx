@@ -11,9 +11,28 @@ import  Tooltip  from '@mui/material/Tooltip';
 
 import style from "../../styles/sideNav.module.css";
 import logo from '../../images/logo.png'
-import {Navigate, useNavigate} from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 
 function SideNav() {
+  const navigate = useNavigate();
+  const user = JSON.parse(sessionStorage.getItem("loggedUser"))
+
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    sessionStorage.clear();
+    navigate("/register");
+  }
+
+  const handleSettings = (e) => {
+    e.preventDefault();
+    navigate("/preference");
+  }
+
+  const handleHome = (e) => {
+    e.preventDefault();
+    navigate(`/${user.username}`)
+  }
+
   return (
     <section className={`${style.body} container-fluid`}>
       <div className={style.imageBox}>
@@ -21,7 +40,7 @@ function SideNav() {
       </div>
       <div className={`${style.icons}`}>
         <Tooltip title="Home Page">
-          <IconButton>
+          <IconButton onClick={handleHome}>
             <LibraryBooksIcon fontSize="large" />
           </IconButton>
         </Tooltip>
@@ -38,14 +57,14 @@ function SideNav() {
         </Tooltip>
 
         <Tooltip title="Settings">
-          <IconButton>
+          <IconButton onClick={handleSettings}>
             <SettingsOutlinedIcon fontSize="large" />
           </IconButton>
         </Tooltip>
       </div>
 
       <div className={`${style.logOut} ${style.icons}`}>
-        <IconButton onClick={() => Navigate("/registration")}>
+        <IconButton onClick={handleLogOut}>
           <LogoutIcon fontSize="large" />
         </IconButton>
       </div>
