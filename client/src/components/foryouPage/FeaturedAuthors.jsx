@@ -5,13 +5,14 @@ import AuthorCard from "./AuthorCard";
 import me from "../../images/me.jpg"
 
 function FeaturedAuthors() {
+  const user = JSON.parse(sessionStorage.getItem("loggedUser"));
   return (
     <section className={style.body}>
       <section className={style.self}>
         <div className={style.imageContainer}>
-          <img src={me} alt=""/>
+          <img src={user.imageUrl} alt=""/>
         </div>
-        <p className={style.name}>Edwin Ajong</p>
+        <p className={style.name}>{user.name}</p>
       </section>
       <p className={style.header}>Writers and Authors</p>
       <section className={`row ${style.cards}`}>
