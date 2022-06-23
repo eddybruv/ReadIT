@@ -36,9 +36,8 @@ router.post("/login", async (req, res) => {
 
 router.post("/update-user", async (req, res) => {
   const { _id, imageUrl, preference } = req.body;
-  const user = await UserModel.findByIdAndUpdate(_id, { imageUrl, preference });
-  
-  user.save();
+  await UserModel.findByIdAndUpdate({_id}, { imageUrl, preference });
+  const user = await UserModel.findById({_id});
 
   user
     ? res.json({ message: "user updated", data: user })
