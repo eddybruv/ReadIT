@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import style from "../../styles/preferences.module.css";
-import picture from "../../images/me.jpg";
+import picture from "../../images/default.png";
 import axios from "axios";
 
 const preset = "readit";
