@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import {PreferenceContext} from "./PreferenceContext";
 import axios from "axios";
 import style from "../../styles/Pcard.module.css";
 import AddIcon from "@mui/icons-material/Add";
@@ -7,38 +8,36 @@ import { IconButton } from "@mui/material";
 
 function Card({ value }) {
   const [added, setAdded] = useState(false);
+  const {preferences, setPreferences} = useContext(PreferenceContext);
 
   const handleClick = async (e) => {
-    let user = JSON.parse(sessionStorage.getItem("loggedUser"));
     const word = e.target.parentNode.childNodes[0].firstChild.data;
+
 
     if (typeof word === "string") {
       setAdded(!added);
-      console.log(user);
-      let url = `https://www.googleapis.com/books/v1/volumes?q=subject:${word}&maxResults=40&key=AIzaSyDRXGABhuGOKXhvKC6_Bp0r6Q7dERVOpWE`;
-
-      console.log(added);
       if (!added) {
-        let request = await axios.get(url);
-        user.preference = [...user.preference, request.data.items];
-        sessionStorage.setItem("loggedUser", JSON.stringify(user));
-        console.log(user.preference);
+        let temp = [...preferences, word];
+        setPreferences(temp);
+      } else {
+        let temp = preferences;
+        temp.splice(temp.indexOf(word), 1);
+        setPreferences(temp)
       }
     }
   };
 
   const handleIconClick = async (e) => {
-    let user = JSON.parse(sessionStorage.getItem("loggedUser"));
     const word = e.target.parentNode.parentNode.childNodes[0].firstChild.data;
     if (typeof word === "string") {
       setAdded(!added);
-      let url = `https://www.googleapis.com/books/v1/volumes?q=subject:${word}&maxResults=40&key=AIzaSyDRXGABhuGOKXhvKC6_Bp0r6Q7dERVOpWE`;
-
       if (!added) {
-        let request = await axios.get(url);
-        user.preference = [...user.preference, request.data.items];
-        sessionStorage.setItem("loggedUser", JSON.stringify(user));
-        console.log(user.preference);
+        let temp = [...preferences, word];
+        setPreferences(temp);
+      } else {
+        let temp = preferences;
+        temp.splice(temp.indexOf(word), 1);
+        setPreferences(temp)
       }
     }
   };
