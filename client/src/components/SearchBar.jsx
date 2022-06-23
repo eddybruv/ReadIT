@@ -32,28 +32,6 @@ function SearchBar() {
     console.log(results);
   };
 
-  let display = JSON.parse(sessionStorage.getItem("results"));
-  useEffect(() => {
-    console.log("new results", results);
-  }, [results]);
-
-  /* if (display !== null) {
-    display = display.filter((book) => {
-      if (
-        book.volumeInfo.hasOwnProperty("imageLinks") &&
-        book.volumeInfo.hasOwnProperty("authors") &&
-        book.volumeInfo.hasOwnProperty("description") &&
-        book.volumeInfo.hasOwnProperty("pageCount") &&
-        book.volumeInfo.hasOwnProperty("inmageLinks") &&
-        book.volumeInfo.hasOwnProperty("previewLink") &&
-        book.volumeInfo.hasOwnProperty("averageCounting") &&
-        book.volumeInfo.hasOwnProperty("authors")
-      ) {
-        return true;
-      }
-      return false;
-    });
-  } */
 
   return (
     <>
@@ -84,22 +62,33 @@ function SearchBar() {
       </section>
 
       <section className={`row ${style.searchResults}`}>
-        {/* { display.map((book, index) => (
-              <Card
-                key={index}
-                title={book.volumeInfo.title}
-                author={book.volumeInfo?.authors[0]}
-                publishedDate={book.volumeInfo.publishedDate}
-                description={book.volumeInfo.description}
-                pageCount={book.volumeInfo.pageCount}
-                smallThumbnail={book.volumeInfo.imageLinks.smallThumbnail}
-                thumbnail={book.volumeInfo.imageLinks.thumbnail}
-                previewLink={book.volumeInfo.previewLink}
-                user_id={index}
-                averageRating={book.volumeInfo.averageRating}
-              />
-            ))
-          /* : "" */}
+        {results !== null
+          ?
+
+          results.filter((book) => {
+            return book.volumeInfo.hasOwnProperty("imageLinks") &&
+              book.volumeInfo.hasOwnProperty("authors") &&
+              book.volumeInfo.hasOwnProperty("publishedDate") &&
+              book.volumeInfo.hasOwnProperty("pageCount") &&
+              book.volumeInfo.hasOwnProperty("previewLink") &&
+              book.volumeInfo.imageLinks.hasOwnProperty("smallThumbnail");
+
+          }).map((book, index) => (
+            <Card
+              key={index}
+              title={book.volumeInfo.title}
+              author={book.volumeInfo.authors[0]}
+              publishedDate={book.volumeInfo.publishedDate}
+              description={book.volumeInfo.description}
+              pageCount={book.volumeInfo.pageCount}
+              smallThumbnail={book.volumeInfo.imageLinks.smallThumbnail}
+              thumbnail={book.volumeInfo.imageLinks.thumbnail}
+              previewLink={book.volumeInfo.previewLink}
+              user_id={index}
+              averageRating={book.volumeInfo.averageRating}
+            />
+          ))
+          : ""}
       </section>
     </>
   );
