@@ -27,7 +27,7 @@ p.title {
   height: 46px;
   width: 80% !important;
   width: inherit;
-  white-space: break word;
+  white-space: break-spaces;
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
