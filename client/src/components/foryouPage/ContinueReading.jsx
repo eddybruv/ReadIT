@@ -42,7 +42,7 @@ function ContinueReading() {
               // averageRating={book.averageRating}
             />
           )
-        }): "No books in your library"}
+        }): ""}
       </section>
     </section>
   );
