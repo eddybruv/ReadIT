@@ -31,11 +31,8 @@ const BookSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    saleability: {
-      type: String,
-      required: true,
-    },
-    userID: { type: mongoose.ObjectId, ref: "users" },
+
+    userID: { type: mongoose.ObjectId, ref: "user" },
   },
   {
     timestamps: true,
