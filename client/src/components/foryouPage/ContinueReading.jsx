@@ -42,7 +42,7 @@ function ContinueReading() {
               // averageRating={book.averageRating}
             />
           )
-        }): ""}
+        }).reverse(): ""}
       </section>
     </section>
   );
