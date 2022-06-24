@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 import Card from "./foryouPage/Card";
 
 function SearchBar() {
+  const user = JSON.parse(sessionStorage.getItem("loggedUser"));
+
   const [results, setResults] = useState([]);
   const [select, setSelect] = useState("intitle:");
 
@@ -18,20 +20,14 @@ function SearchBar() {
 
   const handleSelect = (e) => {
     setSelect(e.target.value);
-    console.log(select);
   };
 
   const handleSubmit = async (e) => {
     let url = `https://www.googleapis.com/books/v1/volumes?q=${select}${text}&maxResults=40&key=AIzaSyC6gNm9Y2bLTInrIZ9zMPax2s3Ohw8lJhE`;
     let request = await axios.get(url);
-    console.log(url);
-    console.log(request);
     setResults(request.data.items);
     sessionStorage.setItem("results", JSON.stringify(request.data.items));
-
-    console.log(results);
   };
-
 
   return (
     <>
@@ -63,31 +59,34 @@ function SearchBar() {
 
       <section className={`row ${style.searchResults}`}>
         {results !== null
-          ?
-
-          results.filter((book) => {
-            return book.volumeInfo.hasOwnProperty("imageLinks") &&
-              book.volumeInfo.hasOwnProperty("authors") &&
-              book.volumeInfo.hasOwnProperty("publishedDate") &&
-              book.volumeInfo.hasOwnProperty("pageCount") &&
-              book.volumeInfo.hasOwnProperty("previewLink") &&
-              book.volumeInfo.imageLinks.hasOwnProperty("smallThumbnail");
-
-          }).map((book, index) => (
-            <Card
-              key={index}
-              title={book.volumeInfo.title}
-              author={book.volumeInfo.authors[0]}
-              publishedDate={book.volumeInfo.publishedDate}
-              description={book.volumeInfo.description}
-              pageCount={book.volumeInfo.pageCount}
-              smallThumbnail={book.volumeInfo.imageLinks.smallThumbnail}
-              thumbnail={book.volumeInfo.imageLinks.thumbnail}
-              previewLink={book.volumeInfo.previewLink}
-              user_id={index}
-              averageRating={book.volumeInfo.averageRating}
-            />
-          ))
+          ? results
+              .filter((book) => {
+                return (
+                  book.volumeInfo.hasOwnProperty("imageLinks") &&
+                  book.volumeInfo.hasOwnProperty("authors") &&
+                  book.volumeInfo.hasOwnProperty("publishedDate") &&
+                  book.volumeInfo.hasOwnProperty("pageCount") &&
+                  book.volumeInfo.hasOwnProperty("previewLink") &&
+                  book.volumeInfo.imageLinks.hasOwnProperty("smallThumbnail") &&
+                  book.volumeInfo.hasOwnProperty("description") &&
+                  book.volumeInfo.hasOwnProperty("title")
+                );
+              })
+              .map((book, index) => (
+                <Card
+                  key={index}
+                  title={book.volumeInfo.title}
+                  author={book.volumeInfo.authors[0]}
+                  publishedDate={book.volumeInfo.publishedDate}
+                  description={book.volumeInfo.description}
+                  pageCount={book.volumeInfo.pageCount}
+                  smallThumbnail={book.volumeInfo.imageLinks.smallThumbnail}
+                  thumbnail={book.volumeInfo.imageLinks.thumbnail}
+                  previewLink={book.volumeInfo.previewLink}
+                  userID={user._id}
+                  averageRating={book.volumeInfo.averageRating}
+                />
+              ))
           : ""}
       </section>
     </>
