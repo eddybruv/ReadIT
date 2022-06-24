@@ -1,0 +1,37 @@
+.body {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 5;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+
+}
+
+.content {
+  animation: slideUp 0.5s ease-in-out;
+  /*background-color: #1A2D31;*/
+}
+
+.option {
+  display: flex;
+  gap: 1rem;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
