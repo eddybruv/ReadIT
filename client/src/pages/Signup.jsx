@@ -10,7 +10,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import HttpsIcon from "@mui/icons-material/Https";
 import PersonIcon from "@mui/icons-material/Person";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 
 import axios from "axios";
 

@@ -7,7 +7,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import HttpsIcon from "@mui/icons-material/Https";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 
 import style from "./../styles/login.module.css";
 import logo from "../images/logo.png";
