@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "name": "readit",
   "description": "Library Management System",
@@ -21,6 +22,10 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/eddybruv/ReadIT/issues"
+  },
+  "engines": {
+    "node": "16.14.0",
+    "npm": "8.12.2"
   },
   "homepage": "https://github.com/eddybruv/ReadIT#readme"
 }
