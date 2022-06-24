@@ -4,7 +4,7 @@ const router = express.Router();
 
 const BookModel = require("../models/Book.model");
 
-router.post("/add-books", (req, res) => {
+router.post("/add-book", (req, res) => {
   const {
     title,
     author,
@@ -33,19 +33,19 @@ router.post("/add-books", (req, res) => {
 
   newBook.save();
 
-  res.json({ message: "created new book", data: newBook });
+  res.json({message: "created new book", data: newBook});
 });
 
-router.post("/get-books", (req, res) => {
-  const { userID } = req.body;
-  const books = BookModel.find({ userID }).populate({
+router.post("/get-books", async  (req, res) => {
+  const {userID} = req.body;
+  const books = await BookModel.find({userID}).populate({
     path: "userID",
     select: "-password",
   });
 
   books
-    ? res.json({ message: "books found", data: books })
-    : res.json({ message: "no books found" });
+    ? res.json({message: "books found", data: books})
+    : res.json({message: "no books found"});
 });
 
 module.exports = router;
