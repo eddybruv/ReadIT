@@ -1,7 +1,7 @@
 import "./App.css";
 
 // routing dependencies
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 // pages
 import Signup from "./pages/Signup";
@@ -29,6 +29,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Router>
         <Routes>
+          <Route path="/" element={<Navigate replace to="/register" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Signup />} />
           <Route path="/preference" element={<Preferences />} />
