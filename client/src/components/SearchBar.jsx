@@ -85,6 +85,7 @@ function SearchBar() {
                   previewLink={book.volumeInfo.previewLink}
                   userID={user._id}
                   averageRating={book.volumeInfo.averageRating}
+                  added={false}
                 />
               ))
           : ""}

@@ -68,7 +68,16 @@ p.rating {
 
 p.date {
   font-weight: 100;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
+}
+
+.link {
+  font-weight: 300;
+}
+
+.link a {
+  text-decoration: none;
+  color: #e0a101;
 }
 
 @media only screen and (max-width: 1000px) {

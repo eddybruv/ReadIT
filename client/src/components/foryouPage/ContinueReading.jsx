@@ -30,7 +30,7 @@ function ContinueReading() {
             <Card
               key={index}
               title={book.title}
-              author={book.authors}
+              author={book.author}
               publishedDate={book.publishedDate}
               description={book.description}
               pageCount={book.pageCount}
@@ -38,8 +38,7 @@ function ContinueReading() {
               thumbnail={book.thumbnail}
               previewLink={book.previewLink}
               user_id={index}
-              // saleability={book.saleInfo.saleability}
-              // averageRating={book.averageRating}
+              added={true}
             />
           )
         }).reverse(): ""}
