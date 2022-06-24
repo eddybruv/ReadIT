@@ -20,7 +20,12 @@ function PickPreference() {
   }, [preferences])
 
   const choices = [
+    {value: "Science"},
+    {value: "Technology"},
     {value: "Romance"},
+    {value: "Self Confidence"},
+    {value: "Sports"},
+    {value: "Women Empowerment"},
     {value: "Horror"},
     {value: "Survival"},
     {value: "Adventure"},
@@ -31,10 +36,8 @@ function PickPreference() {
     {value: "Fantasy"},
     {value: "Fiction"},
     {value: "Poetry"},
-    {value: "Science"},
     {value: "Thriller"},
     {value: "History"},
-    {value: "Technology"},
     {value: "Crime"},
     {value: "Programming"},
     {value: "Children's"},
