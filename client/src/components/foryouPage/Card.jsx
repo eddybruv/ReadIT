@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import BookModal from "./BookModal"
+import BookModal from "./BookModal";
+import OptionModal from "./OptionModal"
 import style from "../../styles/card.module.css";
 import { ButtonGroup, IconButton, Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
@@ -13,12 +14,13 @@ function Card({
   smallThumbnail,
   thumbnail,
   previewLink,
-  user_id,
+  userID,
   saleability,
   averageRating,
 }) {
 
   const [showModal, setShowModal] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
   const bookDetails = {
     title,
     author,
@@ -28,20 +30,27 @@ function Card({
     smallThumbnail,
     thumbnail,
     previewLink,
-    user_id,
+    userID,
     saleability,
     averageRating,
   }
 
 
   const handlePreview = (e) => {
-    e.preventDefault();
+    console.log(bookDetails)
     setShowModal(true);
   }
 
   const handleClose = (e) => {
-    e.preventDefault();
-    setShowModal(false)
+    setShowModal(!showModal);
+  }
+
+  const handleAdd = () => {
+    setShowOptions(true);
+  }
+
+  const handleCloseAdd = () => {
+    setShowOptions(!showOptions);
   }
 
   return (
@@ -62,7 +71,7 @@ function Card({
         </div>
         <ButtonGroup>
           <Button onClick={handlePreview} color="secondary">Preview</Button>
-          <Button color="secondary" variant="contained">
+          <Button onClick={handleAdd} color="secondary" variant="contained">
             Add
           </Button>
         </ButtonGroup>
@@ -70,6 +79,12 @@ function Card({
       {showModal &&
         <BookModal
           closeModal={handleClose}
+          bookDetails={bookDetails}
+        />
+      }
+      {showOptions &&
+        <OptionModal
+          closeOption={handleCloseAdd}
           bookDetails={bookDetails}
         />
       }
