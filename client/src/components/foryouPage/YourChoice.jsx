@@ -26,15 +26,12 @@ function YourChoice() {
   };
 
   useEffect(() => {
-    console.log(books)
   }, [books])
 
   useEffect(() => {
     const fetch = async () => {
       const data = await fetchData();
-      console.log(data);
       setBooks(data.flat())
-      console.log(books)
     }
     fetch().then();
   }, []);
@@ -69,8 +66,9 @@ function YourChoice() {
               book.volumeInfo.hasOwnProperty("publishedDate") &&
               book.volumeInfo.hasOwnProperty("pageCount") &&
               book.volumeInfo.hasOwnProperty("previewLink") &&
-              book.volumeInfo.imageLinks.hasOwnProperty("smallThumbnail");
-
+              book.volumeInfo.imageLinks.hasOwnProperty("smallThumbnail")&&
+              book.volumeInfo.hasOwnProperty("description") &&
+              book.volumeInfo.hasOwnProperty("title");
           }).map((book, index) => (
               <Card
                 key={index}
@@ -79,10 +77,10 @@ function YourChoice() {
                 publishedDate={book.volumeInfo.publishedDate}
                 description={book.volumeInfo.description}
                 pageCount={book.volumeInfo.pageCount}
-                smallThumbnail={book.volumeInfo.imageLinks.smallThumbnail}
+                smallThumbnail={book.volumeInfo.imageLinks.thumbnail}
                 thumbnail={book.volumeInfo.imageLinks.thumbnail}
                 previewLink={book.volumeInfo.previewLink}
-                user_id={index}
+                userID={user._id}
                 averageRating={book.volumeInfo.averageRating}
               />
             ))
