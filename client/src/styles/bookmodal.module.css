@@ -1,9 +1,30 @@
 .body {
-    background-color: #1A2D31;
-    display: flex;
-    gap: 1rem;
-    isolation: isolate;
-    width: 30vw;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 5;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+
+}
+
+.content {
+  height: fit-content;
+  width: 50%;
+  display: flex;
+  gap: 1rem;
+  background-color: #1A2D31;
+  border-radius: 2rem;
+  padding: 0 1rem 1rem 0;
+  animation: slideDown 0.5s ease-in-out;
 }
 
 .photoSection {
@@ -11,5 +32,88 @@
 }
 
 .rightSection {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+}
 
+.title, .mobileTitle {
+  color: #67a2af;
+  font-family: Roboto, sans-serif;
+  font-size: 1.5rem;
+}
+
+.author {
+  font-size: .9rem;
+  font-style: italic;
+  color: #e0a101;
+  font-weight: 300;
+}
+
+.desc {
+  font-weight: 300;
+  color: #bdbaa7;
+}
+
+.pubBox {
+  font-weight: 300;
+}
+
+.page {
+  font-weight: 300;
+}
+
+.link {
+  padding-bottom: 1rem;
+  font-weight: 300;
+}
+
+.link a {
+  text-decoration: none;
+  color: #e0a101;
+}
+
+.mobileTitle {
+  display: none;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .content {
+    width: fit-content;
+    height: 70vh;
+    display: block;
+    overflow-y: scroll;
+  }
+
+  .photoSection {
+    display: flex;
+  }
+
+  .mobileTitle {
+    padding: .5rem;
+    display: block;
+  }
+
+  .title {
+    display: none;
+  }
+
+  .descBox {
+    height: 60%;
+    /*overflow-y: scroll;*/
+  }
+
+  .pubBox {
+    padding-top: .2rem;
+  }
 }
