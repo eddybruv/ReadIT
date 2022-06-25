@@ -41,6 +41,7 @@ const useStyles = makeStyles({
 
 function Signup() {
   const navigate = useNavigate();
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
@@ -75,6 +76,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsDisabled(!isDisabled);
     if (checkFields(user)) {
       const result = await axios
         .post("/api/user/create-user", user)
@@ -193,6 +195,7 @@ function Signup() {
               type="submit"
               color="secondary"
               variant="contained"
+              disabled={isDisabled}
             >
               Sign Up
             </Button>

@@ -11,9 +11,10 @@ function SelectPhoto() {
   let user = JSON.parse(sessionStorage.getItem("loggedUser"));
 
   const [preview, setPreview] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const handleImage = async(e) => {
-    
+    setIsDisabled(!isDisabled);
     setPreview(URL.createObjectURL(e.target.files[0]));
     const formData = new FormData();
 
@@ -54,6 +55,7 @@ function SelectPhoto() {
         color="secondary"
         variant="outlined"
         onClick={() => document.querySelector("input[type=file]").click()}
+        disabled={isDisabled}
       >
         Upload Photo
       </Button>

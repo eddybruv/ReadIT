@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {PreferenceContext} from "./PreferenceContext";
 import Card from "./Card";
 import axios from "axios";
@@ -15,9 +15,8 @@ function PickPreference() {
   const navigate = useNavigate();
   let user = JSON.parse(sessionStorage.getItem("loggedUser"));
 
-  useEffect(() => {
-    console.log(preferences);
-  }, [preferences])
+  const [isDisabled, setIsDisabled] = useState(false);
+
 
   const choices = [
     {value: "Science"},
@@ -49,6 +48,7 @@ function PickPreference() {
 
   const handleClick = async (e) => {
     e.preventDefault();
+    setIsDisabled(true);
 
     let res = await axios
       .post("/api/user/update-user", {
@@ -86,6 +86,7 @@ function PickPreference() {
           variant="contained"
           endIcon={<SendIcon style={{fill: "#1A2D31"}}/>}
           onClick={handleClick}
+          disabled={isDisabled}
         >
           Get Started
         </Button>

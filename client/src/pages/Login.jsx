@@ -35,6 +35,7 @@ const useStyles = makeStyles({
 function Login() {
   const navigate = useNavigate();
 
+  const [isDisabled, setIsDisabled] = useState(false);
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState({
@@ -61,6 +62,7 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsDisabled(!isDisabled);
     if (checkFields(user)) {
       const result = await axios
         .post("/api/user/login", user)
@@ -148,6 +150,7 @@ function Login() {
               type="submit"
               color="secondary"
               variant="contained"
+              disabled={isDisabled}
             >
               Login
             </Button>
