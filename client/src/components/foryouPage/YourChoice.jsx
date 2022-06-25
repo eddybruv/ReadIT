@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import style from "../../styles/yourchoice.module.css";
 import defaultBooks from "./book";
@@ -31,14 +31,14 @@ function YourChoice() {
   useEffect(() => {
     const fetch = async () => {
       const data = await fetchData();
-      setBooks(data.flat())
+      setBooks(data.flat().sort(() => Math.random() - 0.5))
     }
     fetch().then();
   }, []);
 
 
   Array.prototype.shuffle = (array) => {
-    let currentIndex = array.length,  randomIndex;
+    let currentIndex = array.length, randomIndex;
 
     // While there remain elements to shuffle.
     while (currentIndex !== 0) {
@@ -66,25 +66,25 @@ function YourChoice() {
               book.volumeInfo.hasOwnProperty("publishedDate") &&
               book.volumeInfo.hasOwnProperty("pageCount") &&
               book.volumeInfo.hasOwnProperty("previewLink") &&
-              book.volumeInfo.imageLinks.hasOwnProperty("smallThumbnail")&&
+              book.volumeInfo.imageLinks.hasOwnProperty("smallThumbnail") &&
               book.volumeInfo.hasOwnProperty("description") &&
               book.volumeInfo.hasOwnProperty("title");
           }).map((book, index) => (
-              <Card
-                key={index}
-                title={book.volumeInfo.title}
-                author={book.volumeInfo.authors[0]}
-                publishedDate={book.volumeInfo.publishedDate}
-                description={book.volumeInfo.description}
-                pageCount={book.volumeInfo.pageCount}
-                smallThumbnail={book.volumeInfo.imageLinks.thumbnail}
-                thumbnail={book.volumeInfo.imageLinks.thumbnail}
-                previewLink={book.volumeInfo.previewLink}
-                userID={user._id}
-                averageRating={book.volumeInfo.averageRating}
-                added={false}
-              />
-            ))
+            <Card
+              key={index}
+              title={book.volumeInfo.title}
+              author={book.volumeInfo.authors[0]}
+              publishedDate={book.volumeInfo.publishedDate}
+              description={book.volumeInfo.description}
+              pageCount={book.volumeInfo.pageCount}
+              smallThumbnail={book.volumeInfo.imageLinks.thumbnail}
+              thumbnail={book.volumeInfo.imageLinks.thumbnail}
+              previewLink={book.volumeInfo.previewLink}
+              userID={user._id}
+              averageRating={book.volumeInfo.averageRating}
+              added={false}
+            />
+          ))
           : ""}
       </section>
     </section>
