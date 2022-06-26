@@ -53,6 +53,7 @@ function Login() {
   };
 
   const handleChange = (e) => {
+    setIsDisabled(false);
     const { name, value } = e.target;
     setUser({
       ...user, //spread operator
@@ -62,8 +63,8 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsDisabled(!isDisabled);
     if (checkFields(user)) {
+      setIsDisabled(!isDisabled);
       const result = await axios
         .post("/api/user/login", user)
         .then((data) => data)
@@ -72,7 +73,6 @@ function Login() {
       console.log(result);
       if (result.data.message === "user not found") {
         alert("User Not Found!");
-        setIsDisabled(!isDisabled);
       } else {
         if (result.status === 200) {
           sessionStorage.setItem(
