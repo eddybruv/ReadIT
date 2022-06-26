@@ -72,6 +72,7 @@ function Login() {
       console.log(result);
       if (result.data.message === "user not found") {
         alert("User Not Found!");
+        setIsDisabled(!isDisabled);
       } else {
         if (result.status === 200) {
           sessionStorage.setItem(
