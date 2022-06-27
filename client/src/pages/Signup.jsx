@@ -53,6 +53,7 @@ function Signup() {
   });
 
   const handleChange = (e) => {
+    setIsDisabled(false);
     const { name, value } = e.target;
     setUser({
       ...user, //spread operator
@@ -86,9 +87,10 @@ function Signup() {
       console.log(result);
         
       if (result.status === 200) {
-        sessionStorage.setItem("loggedUser", JSON.stringify(result.data.data));
+        localStorage.setItem("loggedUser", JSON.stringify(result.data.data));
         navigate("/preference");
       } else {
+        setIsDisabled(disable => !disable)
         alert("Account not registered");
       }
     }

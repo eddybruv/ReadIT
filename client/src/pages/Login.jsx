@@ -75,12 +75,12 @@ function Login() {
         alert("User Not Found!");
       } else {
         if (result.status === 200) {
-          sessionStorage.setItem(
+          localStorage.setItem(
             "loggedUser",
             JSON.stringify(result.data.data)
           );
           const username = JSON.parse(
-            sessionStorage.getItem("loggedUser")
+            localStorage.getItem("loggedUser")
           ).username;
           navigate(`/${username}`);
         } else {
