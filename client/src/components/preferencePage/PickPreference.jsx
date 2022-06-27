@@ -13,7 +13,7 @@ import style from "../../styles/preferences.module.css";
 function PickPreference() {
   const {preferences, setPreferences} = useContext(PreferenceContext)
   const navigate = useNavigate();
-  let user = JSON.parse(sessionStorage.getItem("loggedUser"));
+  let user = JSON.parse(localStorage.getItem("loggedUser"));
 
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -57,7 +57,7 @@ function PickPreference() {
         preference: preferences,
       })
       .then((data) => data.data);
-    sessionStorage.setItem("loggedUser", JSON.stringify(res.data));
+    localStorage.setItem("loggedUser", JSON.stringify(res.data));
     navigate(`/${user.username}`);
   };
 

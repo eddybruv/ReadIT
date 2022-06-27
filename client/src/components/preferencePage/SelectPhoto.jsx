@@ -8,7 +8,7 @@ import axios from "axios";
 const preset = "readit";
 
 function SelectPhoto() {
-  let user = JSON.parse(sessionStorage.getItem("loggedUser"));
+  let user = JSON.parse(localStorage.getItem("loggedUser"));
 
   const [preview, setPreview] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
@@ -29,7 +29,7 @@ function SelectPhoto() {
     console.log(imageUrl);
 
     user.imageUrl = imageUrl;
-    sessionStorage.setItem("loggedUser", JSON.stringify(user));
+    localStorage.setItem("loggedUser", JSON.stringify(user));
   };
 
   return (
