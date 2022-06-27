@@ -8,7 +8,7 @@ import axios from "axios"
 
 function Hero() {
   const [books, setBooks] = useState(null);
-  const user = JSON.parse(sessionStorage.getItem("loggedUser"))
+  const user = JSON.parse(localStorage.getItem("loggedUser"))
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.post("/api/book/get-books", {userID: user._id}).then(data => setBooks(data.data.data));

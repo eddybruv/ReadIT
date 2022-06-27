@@ -5,7 +5,7 @@ import defaultBooks from "./book";
 import Card from "./Card";
 
 function YourChoice() {
-  const user = JSON.parse(sessionStorage.getItem("loggedUser"))
+  const user = JSON.parse(localStorage.getItem("loggedUser"))
   let topics = user.preference;
 
   const [books, setBooks] = useState(null);

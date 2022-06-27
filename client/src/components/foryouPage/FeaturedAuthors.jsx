@@ -5,7 +5,7 @@ import AuthorCard from "./AuthorCard";
 import me from "../../images/me.jpg"
 
 function FeaturedAuthors() {
-  const user = JSON.parse(sessionStorage.getItem("loggedUser"));
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
   return (
     <section className={style.body}>
       <section className={style.self}>

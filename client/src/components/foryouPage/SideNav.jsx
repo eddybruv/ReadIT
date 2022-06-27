@@ -15,11 +15,11 @@ import { useNavigate} from "react-router-dom"
 
 function SideNav() {
   const navigate = useNavigate();
-  const user = JSON.parse(sessionStorage.getItem("loggedUser"))
+  const user = JSON.parse(localStorage.getItem("loggedUser"))
 
   const handleLogOut = (e) => {
     e.preventDefault();
-    sessionStorage.clear();
+    localStorage.clear();
     navigate("/register");
   }
 
