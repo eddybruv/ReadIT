@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import Card from "./foryouPage/Card";
 
 function SearchBar() {
-  const user = JSON.parse(sessionStorage.getItem("loggedUser"));
+  const user = JSON.parse(localStorage.getItem("loggedUser"));
 
   const [results, setResults] = useState([]);
   const [select, setSelect] = useState("intitle:");
@@ -26,7 +26,7 @@ function SearchBar() {
     let url = `https://www.googleapis.com/books/v1/volumes?q=${select}${text}&maxResults=40&key=AIzaSyC6gNm9Y2bLTInrIZ9zMPax2s3Ohw8lJhE`;
     let request = await axios.get(url);
     setResults(request.data.items);
-    sessionStorage.setItem("results", JSON.stringify(request.data.items));
+    localStorage.setItem("results", JSON.stringify(request.data.items));
   };
 
   return (
