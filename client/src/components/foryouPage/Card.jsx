@@ -77,7 +77,7 @@ function Card({
               Add
             </Button>
           </ButtonGroup> :
-          <p className={style.link}>View on <a href={previewLink}>Google</a></p>
+          <p className={style.link}>View on <a target="_blank" href={previewLink}>Google</a></p>
         }
       </div>
       {showModal &&
