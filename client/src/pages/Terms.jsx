@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from '@mui/material';
 import style from "../styles/terms.module.css";
 import logo from '../images/logo.png'
 import { Button } from '@mui/material';
