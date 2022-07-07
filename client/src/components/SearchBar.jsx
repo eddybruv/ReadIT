@@ -14,6 +14,7 @@ function SearchBar() {
   const [select, setSelect] = useState("intitle:");
 
   const [text, setText] = useState("");
+
   const handleChange = (e) => {
     setText(e.target.value);
   };
@@ -23,11 +24,14 @@ function SearchBar() {
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     let url = `https://www.googleapis.com/books/v1/volumes?q=${select}${text}&maxResults=40&key=AIzaSyC6gNm9Y2bLTInrIZ9zMPax2s3Ohw8lJhE`;
     let request = await axios.get(url);
     setResults(request.data.items);
     localStorage.setItem("results", JSON.stringify(request.data.items));
   };
+
+
 
   return (
     <>
