@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Signup from "./pages/Signup";
 import Preferences from "./pages/Preferences";
 import Login from "./pages/Login";
-import Error from "./pages/ErrorPage";
 import ForYou from "./pages/ForYou";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -34,7 +33,6 @@ function App() {
           <Route path="/register" element={<Signup />} />
           <Route path="/preference" element={<Preferences />} />
           <Route path="/for-you" element={<Login />} />
-          {/* <Route path="/*" element={<Error />} /> */}
           <Route path="/:username" element={<ForYou />} />
         </Routes>
       </Router>
